@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Montage</title>
+    <script type="text/javascript" src="./node_modules/montage/montage.js" data-auto-package></script>
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "name": "Main",
+            "module": "main",
+            "properties": {
+                "element": {"#": "main"},
+                "saveButton": {"@": "saveButton"}
+            }
+        },
+        "saveButton": {
+            "name": "Button",
+            "module": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "my-button"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        }
+    }
+    </script>
+    </head>
+<body>
+    <div id='main'>Loading...
+        <input type='text' name='username' />
+        <button id='my-button'>Save</button>
+        <span id='username'></span>
+    </div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Montage</title>
+    <script type="text/javascript" src="./node_modules/montage/montage.js" data-auto-package></script>
+    <script type="text/montage-serialization">
+    {
+        "btn": {
+            "prototype": "montage/ui/button.reel/button[Button]",
+            "properties": {
+                "element": {"#": "button"}
+            },
+            "bindings": {
+                "enabled": {"<->" : "@checkbox.checked"}
+            }
+        },
+        "checkbox": {
+            "prototype": "montage/ui/input-checkbox.reel/input-checkbox[InputCheckbox]",
+            "properties": {
+                "element": {"#": "checkbox"}
+            }
+        },
+        "a_person": {
+          "prototype": "models/person",
+          "properties": {
+            "name": "Steve",
+            "element": {"#": "person"}
+          }
+        },
+        "owner": {
+            "name": "Main",
+            "module": "main",
+            "properties": {
+                "element": {"#": "main"},
+                "loginButton": {"@": "loginBtn"}
+            }
+        },
+        "loginBtn": {
+            "name": "Button",
+            "module": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "buttonDiv"}
+            }
+        },
+        "slider2": {
+            "name": "Slider",
+            "module": "montage/ui/bluemoon/slider.reel",
+            "properties": {
+                "element": {"#": "slider2"}
+            },
+            "bindings": {
+                "value": { "<->": "@slider1.value" }
+            }
+        },
+        "slider1": {
+            "name": "Slider",
+            "module": "montage/ui/bluemoon/slider.reel",
+            "properties": {
+                "element": {"#": "slider1"}
+            }
+        },
+        "controller": {
+            "name": "Controller",
+            "module": "controller",
+            "properties": {
+                "element": {"#": "main"},
+                "loginButton": {"@": "loginBtn1"}
+            }
+        },
+        "loginBtn1": {
+            "name": "Button",
+            "module": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "buttonDiv1"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "controller"},
+                    "capture": false
+                }
+            ]
+        }
+    }
+    </script>
+    </head>
+<body>
+    <input type="button" id="button" name="" value="Button">
+    <input type="checkbox" id="checkbox" name="" value="Checkbox">
+    <div id='person'>blah</div>
+    <div id="main">
+        <div id="buttonDiv" class="text">Click to enter!</div>
+        <div id="buttonDiv1" class="text">Click!</div>
+    </div>
+    <div id="slider1"></div>
+    <div id="slider2"></div>
+</body>
+</html>
+ -->
