@@ -20,7 +20,7 @@ exports.Main = Montage.create(Component, {
     },
     handleAction: {
         value: function(event) {
-            var val = $('#main > input[name="username"]').val()
+            var val = $('#content > input[name="username"]').val()
             this.user.set('name',val);
             this.displayUsername(val);
             // Do login stuff...
