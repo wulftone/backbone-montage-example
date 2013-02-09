@@ -1,4 +1,10 @@
-{{name}}
+# Backbone-Montage-Example
+
+This is a brief introduction on how to integrate the two technologies, and is itself a work in progress.  I assume I'm doing everything wrong, but this works for now.  If anyone wants to enlighten me, please do!
+
+* [MontageJS](https://github.com/montagejs/montage/)
+* [Backbone](http://documentcloud.github.com/backbone/)
+
 ==============
 
 This is the Montage app template.
