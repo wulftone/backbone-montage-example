@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Hello Montage</title>
+    <link  href="assets/style/style.css" rel="stylesheet" type="text/css" >
     <script type="text/javascript" src="./node_modules/montage/montage.js" data-auto-package></script>
     <script type="text/montage-serialization">
     {
@@ -30,10 +31,13 @@
     </script>
     </head>
 <body>
-    <div id='main'>Loading...
-        <input type='text' name='username' />
-        <button id='my-button'>Save</button>
-        <span id='username'></span>
+    <div id='main'>
+        <span id='loading'>Loading...</span>
+        <div id='content'>
+            <input type='text' name='username' />
+            <button id='my-button'>Save</button>
+            <span id='username'></span>
+        </div>
     </div>
 </body>
 </html>

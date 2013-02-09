@@ -31,6 +31,8 @@ exports.Main = Montage.create(Component, {
             this.user = new User();
             this.user.fetch();
             this.displayUsername(this.user.get('name'));
+            $('#loading').hide();
+            $('#content').show();
         }
     }
 });
