@@ -1,14 +1,13 @@
 var _ = require('vendor/lodash');
 var Backbone = require('vendor/backbone');
 
-exports.User = Backbone.Model.extend({
+var User = exports.User = Backbone.Model.extend({
 
   initialize: function(options) {
-    this.set('name','Jerry');
-    this.on('change:name',this.logger);
+    this.on('change:name', this.logger);
   },
 
-  url: '/users',
+  url: function() { return '/users/:id'; },
 
   logger: function(e) {
     console.log(this.get('name'));

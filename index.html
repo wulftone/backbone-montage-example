@@ -7,18 +7,15 @@
     <script type="text/montage-serialization">
     {
         "owner": {
-            "name": "Main",
-            "module": "main",
+            "prototype": "main",
             "properties": {
-                "element": {"#": "main"},
-                "saveButton": {"@": "saveButton"}
+                "element": {"#": "main"}
             }
         },
-        "saveButton": {
-            "name": "Button",
-            "module": "montage/ui/button.reel",
+        "addButton": {
+            "prototype": "montage/ui/button.reel",
             "properties": {
-                "element": {"#": "my-button"}
+                "element": {"#": "add-button"}
             },
             "listeners": [
                 {
@@ -26,24 +23,57 @@
                     "listener": {"@": "owner"}
                 }
             ]
+        },
+        "saveButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "save-button"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "repetition": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "repetition"}
+            },
+            "bindings": {
+                "contentController": {"<-": "@owner.arrayController"}
+            }
+        },
+       "value": {
+            "prototype": "montage/ui/dynamic-text.reel",
+            "properties": {
+                "element": {"#": "dynamicText"}
+            },
+            "bindings": {
+                "value": {"<-": "@repetition.objectAtCurrentIteration"}
+            }
         }
     }
     </script>
-    </head>
+</head>
 <body>
     <div id='main'>
         <span id='loading'>Loading...</span>
-        <div id='content'>
+        <div id='content' data-montage-id="component">
             <input type='text' name='username' />
-            <button id='my-button'>Save</button>
-            <span id='username'></span>
+            <button id='add-button'>Add</button>
+            <ul data-montage-id="repetition">
+                <li data-montage-id="dynamicText"></li>
+            </ul>
+            <button id='save-button'>Save This List</button>
         </div>
     </div>
 </body>
 </html>
 
-
-<!-- <!DOCTYPE html>
+<!--
+<!DOCTYPE html>
 <html>
 <head>
     <title>Hello Montage</title>

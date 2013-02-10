@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Montage</title>
+    <link  href="assets/style/style.css" rel="stylesheet" type="text/css" >
+    <script type="text/javascript" src="./node_modules/montage/montage.js" data-auto-package></script>
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "prototype": "repeat",
+            "properties": {
+                "element": {"#": "component"}
+            }
+        },
+
+        "changeButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "button"},
+                "label": "Change Content"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+
+        "repetition": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "repetition"}
+            },
+            "bindings": {
+                "contentController": {"<-": "@owner.arrayController"}
+            }
+        },
+
+        "value": {
+            "prototype": "montage/ui/dynamic-text.reel",
+            "properties": {
+                "element": {"#": "value"}
+            },
+            "bindings": {
+                "value": {"<-": "@repetition.objectAtCurrentIteration"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+  <div data-montage-id="component">
+    <button data-montage-id="button"></button>
+
+    <ul data-montage-id="repetition">
+      <li data-montage-id="value"></li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -2,37 +2,49 @@
 // Name: Main
 var Montage = require("montage/core/core").Montage;
 var Component = require("montage/ui/component").Component;
+var ArrayController = require("montage/ui/controller/array-controller").ArrayController;
 require('vendor/zepto');
 var _ = require('vendor/lodash');
-var User = require('models/user').User;
+var Users = require('models/users').Users;
 
 exports.Main = Montage.create(Component, {
+
+    arrayController: {
+        value: null
+    },
+
     hasTemplate: {
         value: false
     },
-    saveButton: {
-        value: null
-    },
-    displayUsername: {
-        value: function(name) {
-            $('#username').html(name);
-        }
-    },
-    handleAction: {
+
+    handleAddButtonAction: {
         value: function(event) {
-            var val = $('#content > input[name="username"]').val()
-            this.user.set('name',val);
-            this.displayUsername(val);
-            // Do login stuff...
+            var val = $('#content > input[name="username"]').val();
+            this.users.add( { name: val } );
+            this.arrayController.content = this.users.pluck('name');
         }
     },
+
+    handleSaveButtonAction: {
+        value: function(event) {
+            this.users.save();
+        }
+    },
+
+    didCreate: {
+        value: function () {
+            this.users = new Users( { name:'default' } ); // give it one user by default
+            this.users.fetch(); // fetch users from the server, doesn't work right now--no resource!
+            var content = this.users.pluck('name');
+            this.arrayController = ArrayController.create().initWithContent(content);
+        }
+    },
+
     prepareForDraw: {
         value: function() {
-            this.user = new User();
-            this.user.fetch();
-            this.displayUsername(this.user.get('name'));
             $('#loading').hide();
             $('#content').show();
         }
     }
+
 });
