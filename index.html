@@ -9,10 +9,19 @@
         "owner": {
             "prototype": "main"
         },
+        "username": {
+            "prototype": "montage/ui/input-text.reel",
+            "properties": {
+                "element": {"#": "username"}
+            }
+        },
         "addButton": {
             "prototype": "montage/ui/button.reel",
             "properties": {
                 "element": {"#": "add-button"}
+            },
+            "bindings": {
+                "detail.username": {"<-": "@username.value"}
             },
             "listeners": [
                 {
@@ -58,7 +67,7 @@
     <div id='main'>
         <span id='loading'>Loading...</span>
         <div id='content' data-montage-id="component">
-            <input type='text' name='username' />
+            <input type='text' data-montage-id='username' />
             <button id='add-button'>Add</button>
             <ul data-montage-id="repetition">
                 <li data-montage-id="dynamicText"></li>

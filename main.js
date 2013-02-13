@@ -15,7 +15,7 @@ exports.Main = Montage.create(Montage, {
 
     handleAddButtonAction: {
         value: function(event) {
-            var val = $('#content > input[name="username"]').val();
+            var val = event.detail.username;
             this.users.add( { name: val } );
             this.arrayController.content = this.users.pluck('name');
         }
