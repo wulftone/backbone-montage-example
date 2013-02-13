@@ -9,6 +9,34 @@
         "owner": {
             "prototype": "main"
         },
+
+        "loadingCondition": {
+            "prototype": "montage/ui/condition.reel",
+            "properties": {
+                "element": {"#": "loading"}
+            },
+            "bindings": {
+                "condition": {"<-": "@owner.loading"}
+            }
+        },
+
+        "invertConverter": {
+            "prototype": "montage/core/converter/invert-converter"
+        },
+
+        "contentCondition": {
+            "prototype": "montage/ui/condition.reel",
+            "properties": {
+                "element": {"#": "content"}
+            },
+            "bindings": {
+                "condition": {
+                    "<-": "@owner.loading",
+                    "converter": {"@": "invertConverter"}
+                }
+            }
+        },
+
         "username": {
             "prototype": "montage/ui/input-text.reel",
             "properties": {
@@ -65,8 +93,8 @@
 </head>
 <body>
     <div id='main'>
-        <span id='loading'>Loading...</span>
-        <div id='content' data-montage-id="component">
+        <span data-montage-id='loading'>Loading...</span>
+        <div id='content' data-montage-id='content' class="montage-invisible">
             <input type='text' data-montage-id='username' />
             <button id='add-button'>Add</button>
             <ul data-montage-id="repetition">

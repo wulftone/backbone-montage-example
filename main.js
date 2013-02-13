@@ -9,6 +9,10 @@ var Users = require('models/users').Users;
 
 exports.Main = Montage.create(Montage, {
 
+    loading: {
+        value: true
+    },
+
     arrayController: {
         value: null
     },
@@ -38,8 +42,7 @@ exports.Main = Montage.create(Montage, {
 
     templateDidLoad: {
         value: function() {
-            $('#loading').hide();
-            $('#content').show();
+            this.loading = false;
         }
     }
 
