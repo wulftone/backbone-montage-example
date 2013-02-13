@@ -7,14 +7,10 @@ require('vendor/zepto');
 var _ = require('vendor/lodash');
 var Users = require('models/users').Users;
 
-exports.Main = Montage.create(Component, {
+exports.Main = Montage.create(Montage, {
 
     arrayController: {
         value: null
-    },
-
-    hasTemplate: {
-        value: false
     },
 
     handleAddButtonAction: {
@@ -40,7 +36,7 @@ exports.Main = Montage.create(Component, {
         }
     },
 
-    prepareForDraw: {
+    templateDidLoad: {
         value: function() {
             $('#loading').hide();
             $('#content').show();
