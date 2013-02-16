@@ -4,171 +4,20 @@
     <title>Hello Montage</title>
     <link  href="assets/style/style.css" rel="stylesheet" type="text/css" >
     <script type="text/javascript" src="./node_modules/montage/montage.js" data-auto-package></script>
+    <style>
+        .montage-app-bootstrapping .main {
+            display: none;
+        }
+    </style>
     <script type="text/montage-serialization">
     {
         "owner": {
-            "prototype": "main",
-            "properties": {
-                "element": {"#": "main"}
-            }
-        },
-        "addButton": {
-            "prototype": "montage/ui/button.reel",
-            "properties": {
-                "element": {"#": "add-button"}
-            },
-            "listeners": [
-                {
-                    "type": "action",
-                    "listener": {"@": "owner"}
-                }
-            ]
-        },
-        "saveButton": {
-            "prototype": "montage/ui/button.reel",
-            "properties": {
-                "element": {"#": "save-button"}
-            },
-            "listeners": [
-                {
-                    "type": "action",
-                    "listener": {"@": "owner"}
-                }
-            ]
-        },
-        "repetition": {
-            "prototype": "montage/ui/repetition.reel",
-            "properties": {
-                "element": {"#": "repetition"}
-            },
-            "bindings": {
-                "contentController": {"<-": "@owner.arrayController"}
-            }
-        },
-       "value": {
-            "prototype": "montage/ui/dynamic-text.reel",
-            "properties": {
-                "element": {"#": "dynamicText"}
-            },
-            "bindings": {
-                "value": {"<-": "@repetition.objectAtCurrentIteration"}
-            }
+            "prototype": "montage/ui/loader.reel"
         }
     }
     </script>
 </head>
 <body>
-    <div id='main'>
-        <span id='loading'>Loading...</span>
-        <div id='content' data-montage-id="component">
-            <input type='text' name='username' />
-            <button id='add-button'>Add</button>
-            <ul data-montage-id="repetition">
-                <li data-montage-id="dynamicText"></li>
-            </ul>
-            <button id='save-button'>Save This List</button>
-        </div>
-    </div>
+    Loading...
 </body>
 </html>
-
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Hello Montage</title>
-    <script type="text/javascript" src="./node_modules/montage/montage.js" data-auto-package></script>
-    <script type="text/montage-serialization">
-    {
-        "btn": {
-            "prototype": "montage/ui/button.reel/button[Button]",
-            "properties": {
-                "element": {"#": "button"}
-            },
-            "bindings": {
-                "enabled": {"<->" : "@checkbox.checked"}
-            }
-        },
-        "checkbox": {
-            "prototype": "montage/ui/input-checkbox.reel/input-checkbox[InputCheckbox]",
-            "properties": {
-                "element": {"#": "checkbox"}
-            }
-        },
-        "a_person": {
-          "prototype": "models/person",
-          "properties": {
-            "name": "Steve",
-            "element": {"#": "person"}
-          }
-        },
-        "owner": {
-            "name": "Main",
-            "module": "main",
-            "properties": {
-                "element": {"#": "main"},
-                "loginButton": {"@": "loginBtn"}
-            }
-        },
-        "loginBtn": {
-            "name": "Button",
-            "module": "montage/ui/button.reel",
-            "properties": {
-                "element": {"#": "buttonDiv"}
-            }
-        },
-        "slider2": {
-            "name": "Slider",
-            "module": "montage/ui/bluemoon/slider.reel",
-            "properties": {
-                "element": {"#": "slider2"}
-            },
-            "bindings": {
-                "value": { "<->": "@slider1.value" }
-            }
-        },
-        "slider1": {
-            "name": "Slider",
-            "module": "montage/ui/bluemoon/slider.reel",
-            "properties": {
-                "element": {"#": "slider1"}
-            }
-        },
-        "controller": {
-            "name": "Controller",
-            "module": "controller",
-            "properties": {
-                "element": {"#": "main"},
-                "loginButton": {"@": "loginBtn1"}
-            }
-        },
-        "loginBtn1": {
-            "name": "Button",
-            "module": "montage/ui/button.reel",
-            "properties": {
-                "element": {"#": "buttonDiv1"}
-            },
-            "listeners": [
-                {
-                    "type": "action",
-                    "listener": {"@": "controller"},
-                    "capture": false
-                }
-            ]
-        }
-    }
-    </script>
-    </head>
-<body>
-    <input type="button" id="button" name="" value="Button">
-    <input type="checkbox" id="checkbox" name="" value="Checkbox">
-    <div id='person'>blah</div>
-    <div id="main">
-        <div id="buttonDiv" class="text">Click to enter!</div>
-        <div id="buttonDiv1" class="text">Click!</div>
-    </div>
-    <div id="slider1"></div>
-    <div id="slider2"></div>
-</body>
-</html>
- -->
