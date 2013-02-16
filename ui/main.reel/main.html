@@ -1,11 +1,7 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Main</title>
-
-    <link rel="stylesheet" type="text/css" href="main.css">
-
     <script type="text/montage-serialization">
     {
         "owner": {
@@ -14,22 +10,72 @@
             }
         },
 
-        "exampleText": {
-            "prototype": "montage/ui/dynamic-text.reel",
+        "username": {
+            "prototype": "montage/ui/input-text.reel",
             "properties": {
-                "element": {"#": "exampleText"}
+                "element": {"#": "username"}
+            }
+        },
+
+        "addButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "add-button"}
             },
             "bindings": {
-                "value": {"<-": "@owner.thing"}
+                "detail.username": {"<-": "@username.value"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+
+        "saveButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "save-button"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+
+        "repetition": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "repetition"}
+            },
+            "bindings": {
+                "contentController": {"<-": "@owner.arrayController"}
+            }
+        },
+
+        "value": {
+            "prototype": "montage/ui/dynamic-text.reel",
+            "properties": {
+                "element": {"#": "dynamicText"}
+            },
+            "bindings": {
+                "value": {"<-": "@repetition.objectAtCurrentIteration"}
             }
         }
     }
     </script>
 </head>
 <body>
-    <div data-montage-id="main" class="Main">
-        Hello, <span data-montage-id="exampleText"></span>
+    <div data-montage-id='main' class="main">
+        <input type='text' data-montage-id='username' />
+        <button id='add-button'>Add</button>
+        <ul data-montage-id="repetition">
+            <li data-montage-id="dynamicText"></li>
+        </ul>
+        <button id='save-button'>Save This List</button>
     </div>
 </body>
 </html>
- -->
